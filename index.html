@@ -246,14 +246,18 @@
 
   /* HERO */
   .hero {
-    padding: clamp(40px, 8vw, 100px) 0 clamp(60px, 10vw, 120px);
+    min-height: calc(100vh - 100px);
+    min-height: calc(100svh - 100px);
+    display: flex; align-items: center;
+    padding: clamp(32px, 4vw, 56px) 0;
     position: relative;
   }
+  .hero > .container { width: 100%; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: clamp(30px, 6vw, 80px);
-    align-items: end;
+    align-items: center;
   }
   .hero-text { position: relative; }
   .hero-meta {
@@ -317,6 +321,8 @@
 
   .hero-portrait {
     position: relative;
+    width: 90%;
+    justify-self: end;
     aspect-ratio: 4/5;
     border-radius: var(--radius);
     overflow: hidden;
@@ -1120,8 +1126,7 @@
   .contact-page { padding-top: clamp(40px, 7vw, 80px); }
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 100px);
+    grid-template-columns: 1fr;
     align-items: start;
   }
   .contact-left h1 {
@@ -1140,7 +1145,7 @@
     line-height: 1.5;
     color: var(--ink-soft);
     margin-bottom: 50px;
-    max-width: 480px;
+    max-width: 720px;
   }
   .contact-info { display: flex; flex-direction: column; gap: 28px; margin-bottom: 50px; }
   .contact-row { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
@@ -1175,127 +1180,16 @@
     transform: translateY(-2px);
   }
 
-  /* CONTACT FORM */
-  .contact-form-wrap {
-    background: var(--bg-elev);
-    border-radius: clamp(20px, 3vw, 30px);
-    padding: clamp(28px, 4vw, 50px);
-    position: sticky;
-    top: 110px;
-  }
-  .contact-form-head {
-    display: flex; gap: 14px; align-items: center;
-    margin-bottom: 40px;
-    padding-bottom: 24px; border-bottom: 1px solid var(--line);
-  }
-  .contact-portrait {
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: linear-gradient(135deg, #c4b5fd 0%, #8b6dff 100%);
-    flex-shrink: 0;
-  }
-  .contact-portrait svg { width: 100%; height: 100%; }
-  .contact-portrait-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .contact-form-head h3 {
-    font-family: var(--display);
-    font-size: 1.2rem;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-  }
-  .contact-form-head p {
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-  }
-
-  .field { margin-bottom: 22px; position: relative; }
-  .field label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--ink-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 10px;
-    display: block;
-  }
-  .field input,
-  .field textarea,
-  .field select {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--line);
-    padding: 12px 0;
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--ink);
-    transition: border-color var(--t-fast);
-    outline: none;
-    letter-spacing: -0.005em;
-  }
-  .field input::placeholder,
-  .field textarea::placeholder { color: var(--ink-mute); font-family: var(--sans); }
-  .field input:focus,
-  .field textarea:focus,
-  .field select:focus { border-color: var(--accent); }
-  .field textarea { resize: vertical; min-height: 80px; }
-
-  .budget-options { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-  .budget-options label {
-    margin: 0; padding: 8px 14px;
-    border: 1px solid var(--line);
-    border-radius: 100px;
-    cursor: pointer;
-    font-family: var(--sans);
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-    transition: all var(--t-fast);
-  }
-  .budget-options input { display: none; }
-  .budget-options input:checked + label,
-  .budget-options label:hover {
-    background: var(--ink); color: var(--bg); border-color: var(--ink);
-  }
-
-  .form-submit {
-    width: 100%;
-    background: var(--ink);
-    color: var(--bg);
-    padding: 18px;
-    border-radius: 100px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all var(--t-fast);
-    margin-top: 14px;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
-  .form-submit:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px -10px var(--accent);
-  }
-
   /* ============ RESPONSIVE ============ */
   @media (max-width: 960px) {
     .hero-grid { grid-template-columns: 1fr; gap: 50px; }
-    .hero-portrait { max-width: 480px; }
+    .hero-portrait { max-width: 432px; justify-self: start; }
     .featured-item, .featured-item:nth-child(even) { direction: ltr; grid-template-columns: 1fr; gap: 24px; }
     .about-grid { grid-template-columns: 1fr; }
     .section-head { grid-template-columns: 1fr; gap: 20px; }
     .section-head p { justify-self: start; }
     .case-layout { grid-template-columns: 1fr; }
     .case-nav { position: static; display: none; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .contact-form-wrap { position: static; }
     .case-meta { grid-template-columns: repeat(2, 1fr); }
     .metrics { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
@@ -1485,39 +1379,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section>
-    <div class="container">
-      <div class="about">
-        <div class="about-grid">
-          <div class="about-stats">
-            <div class="stat-row">
-              <div class="stat-num"><span class="ital">9</span>+</div>
-              <div class="stat-label">Years of Practice</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-num">42</div>
-              <div class="stat-label">Shipped Products</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-num"><span class="ital">14</span></div>
-              <div class="stat-label">Industry Awards</div>
-            </div>
-          </div>
-          <div class="about-text">
-            <div class="eyebrow" style="margin-bottom:30px">About Me</div>
-            <p>I help <span class="ital">ambitious teams</span> turn complex problems into products that feel inevitable. My work sits at the intersection of <span class="ital">systems</span>, <span class="ital">strategy</span>, and <span class="ital">storytelling</span> — with a stubborn obsession for craft.</p>
-            <p style="font-size:1rem;color:var(--ink-soft);font-family:var(--sans);font-weight:400;line-height:1.6">Currently leading product design at Linear, previously at Stripe and Figma. When I'm not in Figma, you'll find me sketching at cafés or chasing good light with a film camera.</p>
-            <div class="about-sig">
-              <span class="sig-img">Kishore</span>
-              <span class="sig-name">— Kishore, Lead Product Designer</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT CTA -->
   <section class="contact-cta">
     <div class="container">
@@ -1554,7 +1415,6 @@
 <main class="page" id="page-work">
   <section class="work-hero">
     <div class="container">
-      <div class="eyebrow" style="margin-bottom:30px">Selected Work 2017 — 2026</div>
       <h1>A decade of<br/><span class="ital">considered</span> craft.</h1>
       <div class="work-hero-meta">
         <div>
@@ -2187,10 +2047,9 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-left">
-          <div class="eyebrow" style="margin-bottom:30px">— Get in touch</div>
-          <h1>Let's make<br/>something<br/><span class="ital">remarkable.</span></h1>
+          <h1>Hi, I'm<br/><span class="ital">Kishore</span></h1>
           <p class="intro">
-            I'm currently taking on a small number of new projects for the second half of 2026 — design leadership, product strategy, and the occasional editorial commission.
+            I save people's time by designing simple, easy to use and delightful digital interfaces. Apart from UI/UX design, I do Motion design, Video editing, Sound Design, and digital marketing.
           </p>
 
           <div class="contact-info">
@@ -2198,13 +2057,6 @@
               <span class="mono">— Email</span>
               <a href="mailto:kishoresv07@gmail.com">
                 kishoresv07@gmail.com
-                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11L11 3M11 3H4M11 3V10"/></svg>
-              </a>
-            </div>
-            <div class="contact-row">
-              <span class="mono">— Studio</span>
-              <a href="#">
-                Kishore Studio, Bangalore
                 <svg width="18" height="18" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11L11 3M11 3H4M11 3V10"/></svg>
               </a>
             </div>
@@ -2226,50 +2078,6 @@
               <a href="https://www.youtube.com/channel/UCTbGkvGg0EdeA5batUFprvg" class="pill" target="_blank" rel="noopener">YouTube ↗</a>
             </div>
           </div>
-        </div>
-
-        <div class="contact-form-wrap">
-          <div class="contact-form-head">
-            <div class="contact-portrait">
-              <img src="https://github.com/LowKi-07/portfolio/blob/main/Assets/Profile-dp.jpg?raw=true" alt="Kishore" class="contact-portrait-img" />
-            </div>
-            <div>
-              <h3>Or send a brief.</h3>
-              <p>I usually respond within 24 hours.</p>
-            </div>
-          </div>
-
-          <form onsubmit="event.preventDefault(); this.querySelector('.form-submit').innerHTML='Sent ✓ — talk soon';">
-            <div class="field">
-              <label>Your name</label>
-              <input type="text" placeholder="Jane Doe" required />
-            </div>
-            <div class="field">
-              <label>Email</label>
-              <input type="email" placeholder="jane@company.com" required />
-            </div>
-            <div class="field">
-              <label>What's it about?</label>
-              <input type="text" placeholder="A new product, a redesign, an idea..." required />
-            </div>
-            <div class="field">
-              <label>Budget</label>
-              <div class="budget-options">
-                <input type="radio" name="budget" id="b1" /><label for="b1">$10 – 25K</label>
-                <input type="radio" name="budget" id="b2" checked /><label for="b2">$25 – 75K</label>
-                <input type="radio" name="budget" id="b3" /><label for="b3">$75K+</label>
-                <input type="radio" name="budget" id="b4" /><label for="b4">Let's talk</label>
-              </div>
-            </div>
-            <div class="field">
-              <label>Tell me more</label>
-              <textarea placeholder="A few sentences about goals, timeline, anything you'd like me to know..." rows="3"></textarea>
-            </div>
-            <button type="submit" class="form-submit">
-              Send message
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M11 3H4M11 3V10"/></svg>
-            </button>
-          </form>
         </div>
       </div>
     </div>
