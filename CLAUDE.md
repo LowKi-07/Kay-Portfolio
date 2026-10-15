@@ -1,41 +1,20 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Personal portfolio for Kishore S, served at kishoresv.com via GitHub Pages (`CNAME`) from `main`.
 
-## Project Overview
+## Structure
 
-This is a personal portfolio website. Update this section with the chosen stack once the project is initialized.
+- `index.html` — the whole site: inline CSS and JS, no build step. Pages (Home, Work, Case Study, About me) are `<main class="page">` sections switched by `data-page` links.
+- `Assets/logos/` — "Worked With" brand logos, rendered monochrome via CSS filters.
+- `Assets/projects/` — project thumbnails for the home and Work pages.
+- `resume/resume.html` — source for `Assets/Kishore-S-Resume.pdf`.
 
 ## Commands
 
-Update these once the project is set up:
-
 ```bash
-# Install dependencies
-npm install
+# Preview locally at http://localhost:8080
+python3 -m http.server 8080
 
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Lint
-npm run lint
-
-# Run tests
-npm test
-
-# Run a single test file
-npm test -- path/to/test.file
+# Regenerate the resume PDF after editing resume/resume.html (must stay one A4 page)
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --virtual-time-budget=8000 --print-to-pdf=Assets/Kishore-S-Resume.pdf "file://$PWD/resume/resume.html"
 ```
-
-## Architecture
-
-_To be filled in once the project structure is established._
-
-Key decisions to document here:
-- Framework choice (Next.js, Astro, SvelteKit, etc.)
-- Styling approach (Tailwind, CSS Modules, styled-components, etc.)
-- Content management (MDX, CMS, static JSON, etc.)
-- Deployment target (Vercel, Netlify, GitHub Pages, etc.)
